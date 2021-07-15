@@ -132,7 +132,7 @@ void Main()
 	// 中心:   カメラの中心をプレイヤーの位置にする
 	// 拡大率: 1.0
 	Camera2D camera(
-		playerCell * ChipSize + Vec2(ChipSize / 2, ChipSize / 2),
+		(playerCell * ChipSize + Vec2(ChipSize / 2, ChipSize / 2)).asPoint(),
 		1.0,
 		Camera2DParameters::NoControl()
 	);
@@ -240,8 +240,8 @@ void Main()
 			// 歩行の進捗を進める
 			walkProgress += Scene::DeltaTime() * walkSpeed;
 			camera.jumpTo(
-				playerCell.lerp(playerNextCell, walkProgress) * ChipSize
-				+ Vec2(ChipSize / 2, ChipSize / 2),
+				(playerCell.lerp(playerNextCell, walkProgress) * ChipSize
+				+ Vec2(ChipSize / 2, ChipSize / 2)).asPoint(),
 				1.0
 			);
 
